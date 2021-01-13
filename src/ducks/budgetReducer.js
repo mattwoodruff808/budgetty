@@ -4,6 +4,6 @@ const initialState = {
     loading: false
 }
 
-export default function reducer(state = initialState, action){
+export default function budgetReducer(state = initialState, action){
     return state;
 }
