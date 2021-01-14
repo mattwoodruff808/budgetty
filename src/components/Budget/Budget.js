@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestUserData } from './../../ducks/userReducer';
-import { requestBudgetData } from './../../ducks/budgetReducer';
+import { requestBudgetData, addPurchase, removePurchase } from './../../ducks/budgetReducer';
 import Background from './../shared/Background/Background';
 import Chart1 from './../shared/Chart1';
 import Chart2 from './../shared/Chart2';
@@ -30,8 +30,8 @@ class Budget extends Component {
           <Nav firstName={firstName} lastName={lastName}/>
           <div className='content-container'>
             <div className="purchases-container">
-              <AddPurchase />
-              <DisplayPurchases purchases={purchases}/>
+              <AddPurchase addPurchase={this.props.addPurchase}/>
+              <DisplayPurchases purchases={purchases} removePurchase={this.props.removePurchase}/>
             </div>
             <div className='chart-container'>
               <Chart1 purchases={purchases} budgetLimit={budgetLimit}/>
@@ -51,4 +51,4 @@ const mapStateToProps = reduxState => {
   }
 }
 
-export default connect(mapStateToProps, {requestUserData, requestBudgetData})(Budget);
+export default connect(mapStateToProps, {requestUserData, requestBudgetData, addPurchase, removePurchase})(Budget);
